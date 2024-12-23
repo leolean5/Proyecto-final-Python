@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render  # Importamos render para renderizar templates
 
-# Create your views here.
+# Vista para la página principal del blog
+def home(request):
+    return render(request, 'home.html')  # Renderizamos el template 'home.html'
+
