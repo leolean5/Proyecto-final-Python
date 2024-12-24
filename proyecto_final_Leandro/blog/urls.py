@@ -8,4 +8,6 @@ urlpatterns = [
     path('crear/', views.blog_crear, name='blog_crear'),  # Crear publicación
     path('<int:blog_id>/editar/', views.blog_editar, name='blog_editar'),  # Editar publicación
     path('<int:blog_id>/eliminar/', views.blog_eliminar, name='blog_eliminar'),  # Eliminar publicación
+    path('acerca/', views.acerca, name='acerca'),  # Nueva ruta para "Acerca de mí"
 ]
+

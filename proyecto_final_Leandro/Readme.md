@@ -29,5 +29,32 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas y her
     - python manage.py createsuperuser
 4. Iniciar el servidor Ejecutá el servidor de desarrollo:
     - python manage.py runserver
+5. Accede a la aplicación
+    - Página principal del blog: http://127.0.0.1:8000/
+    - Panel de administración: http://127.0.0.1:8000/admin/
 
+## Funcionalidades implementadas
+1. Autenticación de usuarios:
+   - Iniciar sesión: Ruta /login/
+   -Cerrar sesión: Botón "Cerrar Sesión" en la barra de navegación.
+2. CRUD de publicaciones:
+   - Crear publicaciones: Ruta /crear/
+   - Editar publicaciones: Ruta /<id_de_publicacion>/editar/
+   - Eliminar publicaciones: Ruta /<id_de_publicacion>/eliminar/
+3. Manejo de imágenes:
+   - Cada publicación puede incluir una imagen asociada.
+4. Mensajes de confirmación:
+   - Mensajes claros al realizar acciones como crear, editar o eliminar publicaciones.
+5. Diseño básico con HTML:
+   - Estructura sencilla para navegación y vistas de publicaciones.
+
+
+## Notas adicionales
+Este proyecto fue probado con Python 3.13 y Django 5.1.4.
+Asegúrate de que el servidor está corriendo en el puerto 8000 (por defecto) antes de acceder a las rutas.
+
+## Autor
+Leandro Agustín Molina
+Curso de Python - Coderhouse
+https://github.com/leolean
 

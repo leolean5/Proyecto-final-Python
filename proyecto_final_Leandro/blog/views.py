@@ -70,3 +70,9 @@ def blog_eliminar(request, blog_id):
     return render(request, 'blog/blog_eliminar.html', {'publicacion': publicacion})
 
 
+# Vista para la página "Acerca de mí"
+def acerca(request):
+    return render(request, 'blog/acerca.html')
+    # Renderiza el template acerca.html
+
+

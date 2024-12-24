@@ -11,17 +11,15 @@
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/crear/">Crear Publicación</a></li>
+                <li><a href="/acerca/">Acerca de mí</a></li>
                 {% if user.is_authenticated %}
-                    <!-- Muestra el formulario de logout si el usuario está autenticado -->
                     <li>
                         <form action="/logout/" method="post" style="display: inline;">
                             {% csrf_token %}
-                            <!-- Botón de logout -->
                             <button type="submit">Cerrar Sesión</button>
                         </form>
                     </li>
                 {% else %}
-                    <!-- Link de login si el usuario no está autenticado -->
                     <li><a href="/login/">Iniciar Sesión</a></li>
                 {% endif %}
             </ul>
@@ -29,7 +27,6 @@
     </header>
     <main>
         {% if messages %}
-        <!-- Bloque para mostrar mensajes de confirmación -->
         <ul>
             {% for message in messages %}
             <li>{{ message }}</li>
@@ -37,7 +34,6 @@
         </ul>
         {% endif %}
         {% block content %}
-        <!-- Aquí irá el contenido específico de cada página -->
         {% endblock %}
     </main>
 </body>
