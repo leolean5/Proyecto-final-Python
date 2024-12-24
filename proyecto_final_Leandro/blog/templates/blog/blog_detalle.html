@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ publicacion.title }}</title>
-</head>
-<body>
-    <h1>{{ publicacion.title }}</h1>
-    <h2>{{ publicacion.subtitle }}</h2>
-    <p><strong>Autor:</strong> {{ publicacion.author }}</p>
-    <p><strong>Fecha:</strong> {{ publicacion.date }}</p>
-    <div>
-        <img src="{{ publicacion.image.url }}" alt="Imagen del blog" style="max-width: 600px;">
-        <!-- Si hay una imagen asociada, se muestra -->
-    </div>
-    <p>{{ publicacion.body }}</p>
-    <a href="/">Volver a la lista</a>  
-    <!-- Link para regresar a la lista de publicaciones -->
-</body>
-</html>
+{% extends 'blog/base.html' %}
+<!-- Extiendo la plantilla base para mantener la estructura principal -->
+
+{% block title %}
+{{ publicacion.title }}
+<!-- Sobrescribo el título con el título de la publicación -->
+{% endblock %}
+
+{% block content %}
+<!-- Sobrescribo el contenido principal para mostrar el detalle de una publicación -->
+<h1>{{ publicacion.title }}</h1>
+<h2>{{ publicacion.subtitle }}</h2>
+<p><strong>Autor:</strong> {{ publicacion.author }}</p>
+<p><strong>Fecha:</strong> {{ publicacion.date }}</p>
+<div>
+    <img src="{{ publicacion.image.url }}" alt="Imagen del blog" style="max-width: 600px;">
+    <!-- Si hay una imagen asociada, se muestra aquí -->
+</div>
+<p>{{ publicacion.body }}</p>
+<a href="/">Volver a la lista</a>
+<!-- Link para regresar a la lista de publicaciones -->
+{% endblock %}

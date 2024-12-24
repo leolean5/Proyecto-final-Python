@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Blogs</title>
-</head>
-<body>
-    <h1>Lista de Publicaciones</h1>
-    {% for blog in blogs %}
-        <div>
-            <h2><a href="{{ blog.id }}/">{{ blog.title }}</a></h2>
-            <p>{{ blog.subtitle }}</p>
-            <p><strong>Autor:</strong> {{ blog.author }}</p>
-            <p><strong>Fecha:</strong> {{ blog.date }}</p>
-        </div>
-        <hr>
-    {% empty %}
-        <p>No hay publicaciones disponibles.</p>
-    {% endfor %}
-</body>
-</html>
+{% extends 'blog/base.html' %}
+<!-- Extiendo la plantilla base para mantener la estructura principal -->
+
+{% block title %}
+Lista de Publicaciones
+<!-- Sobrescribo el bloque del título para esta página -->
+{% endblock %}
+
+{% block content %}
+<!-- Sobrescribo el contenido principal para listar las publicaciones -->
+<h1>Lista de Publicaciones</h1>
+
+{% for blog in blogs %}
+    <!-- Itero sobre las publicaciones para mostrarlas una a una -->
+    <div>
+        <h2><a href="{{ blog.id }}/">{{ blog.title }}</a></h2>
+        <!-- Título de la publicación con un enlace a su detalle -->
+        <p>{{ blog.subtitle }}</p>
+        <p><strong>Autor:</strong> {{ blog.author }}</p>
+        <p><strong>Fecha:</strong> {{ blog.date }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <!-- Mensaje para mostrar si no hay publicaciones -->
+    <p>No hay publicaciones disponibles.</p>
+{% endfor %}
+{% endblock %}

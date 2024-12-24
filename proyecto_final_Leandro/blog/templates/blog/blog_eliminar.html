@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+<!-- Extiendo la plantilla base para mantener la estructura principal -->
+
+{% block title %}
+Eliminar Publicación
+<!-- Sobrescribo el título de la página -->
+{% endblock %}
+
+{% block content %}
+<!-- Sobrescribo el contenido principal para mostrar la confirmación -->
+<h1>Eliminar Publicación</h1>
+<p>¿Estás seguro de que querés eliminar la publicación "{{ publicacion.title }}"?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <!-- Token CSRF para la seguridad del formulario -->
+    <button type="submit">Sí, eliminar</button>
+    <!-- Botón para confirmar la eliminación -->
+</form>
+
+<a href="/">Cancelar</a>
+<!-- Link para cancelar y regresar a la lista -->
+{% endblock %}

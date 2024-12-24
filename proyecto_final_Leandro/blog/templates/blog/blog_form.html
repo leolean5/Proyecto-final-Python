@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+<!-- Extiendo la plantilla base para mantener la estructura principal -->
+
+{% block title %}
+{% if formulario.instance.pk %}
+Editar Publicación
+<!-- Si hay una instancia en el formulario, estamos editando -->
+{% else %}
+Crear Publicación
+<!-- Si no hay una instancia, estamos creando -->
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- Sobrescribo el contenido principal para mostrar el formulario -->
+<h1>
+    {% if formulario.instance.pk %}
+    Editar Publicación
+    {% else %}
+    Crear Publicación
+    {% endif %}
+</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Token CSRF para la seguridad del formulario -->
+    {{ formulario.as_p }}
+    <!-- Renderizo el formulario con sus campos -->
+    <button type="submit">Guardar</button>
+    <!-- Botón para enviar el formulario -->
+</form>
+
+<a href="/">Volver a la lista</a>
+<!-- Link para regresar a la lista de publicaciones -->
+{% endblock %}
