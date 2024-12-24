@@ -5,4 +5,4 @@ from .models import Blog
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog  # Usamos el modelo Blog
-        fields = ['title', 'subtitle', 'body', 'author', 'image']  # Campos que estarán en el formulario
+        fields = ['title', 'subtitle', 'body', 'image']  # Campos que estarán en el formulario
