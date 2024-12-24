@@ -14,3 +14,4 @@ class Blog(models.Model):
         # Método para mostrar una representación legible del blog (en este caso, su título)
         return self.title
 
+
