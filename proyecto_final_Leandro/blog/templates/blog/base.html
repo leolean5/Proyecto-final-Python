@@ -11,6 +11,19 @@
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="/crear/">Crear Publicación</a></li>
+                {% if user.is_authenticated %}
+                    <!-- Muestra el formulario de logout si el usuario está autenticado -->
+                    <li>
+                        <form action="/logout/" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <!-- Botón de logout -->
+                            <button type="submit">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <!-- Link de login si el usuario no está autenticado -->
+                    <li><a href="/login/">Iniciar Sesión</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
@@ -20,7 +33,6 @@
         <ul>
             {% for message in messages %}
             <li>{{ message }}</li>
-            <!-- Renderizo cada mensaje disponible -->
             {% endfor %}
         </ul>
         {% endif %}

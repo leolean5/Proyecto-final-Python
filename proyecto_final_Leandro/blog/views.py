@@ -8,10 +8,10 @@ from django.core.exceptions import PermissionDenied  # Para manejar permisos de 
 
 # Vista para listar todas las publicaciones
 def blog_lista(request):
-    publicaciones = Blog.objects.all().order_by('-date')  
-    # Obtengo todas las publicaciones, ordenadas por fecha descendente
-    return render(request, 'blog/blog_lista.html', {'publicaciones': publicaciones})  
-    # Renderizo la plantilla blog_lista.html y le paso las publicaciones como contexto
+    blogs = Blog.objects.all().order_by('-date')  
+    # Traemos todas las publicaciones ordenadas por fecha descendente
+    return render(request, 'blog/blog_lista.html', {'blogs': blogs})  
+    # Pasamos las publicaciones al template como 'blogs'
 
 # Vista para mostrar los detalles de una publicación específica
 def blog_detalle(request, blog_id):
