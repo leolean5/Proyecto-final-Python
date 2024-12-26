@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<h1>Editar Perfil</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Cambios</button>
+</form>
+<hr>
+<h2>Opciones adicionales</h2>
+<ul>
+    <li><a href="{% url 'cambiar_contrasena' %}">Cambiar Contraseña</a></li>
+</ul>
+{% endblock %}

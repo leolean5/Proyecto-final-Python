@@ -8,7 +8,7 @@ class Blog(models.Model):
     body = models.TextField()  # Cuerpo del blog, donde irá el contenido principal
     author = models.ForeignKey(User, on_delete=models.CASCADE)  # Relación con el modelo User. Cada blog tendrá un autor. Si se elimina el autor, se elimina su blog
     date = models.DateField(auto_now_add=True)  # Fecha de creación automática al guardar el blog por primera vez
-    image = models.ImageField(upload_to='blog_images/', blank=True)  # Imagen opcional del blog. Se guardará en la carpeta 'blog_images/'
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True)  # Imagen opcional del blog. Se guardará en la carpeta 'blog_images/'
 
     def __str__(self):  
         # Método para mostrar una representación legible del blog (en este caso, su título)

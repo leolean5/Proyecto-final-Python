@@ -1,4 +1,4 @@
-{% extends 'templates/base.html' %}
+{% extends "base.html" %}
 <!-- Extiendo la plantilla base para mantener la estructura principal -->
 
 {% block title %}
@@ -13,7 +13,11 @@
 <p><strong>Autor:</strong> {{ publicacion.author }}</p>
 <p><strong>Fecha:</strong> {{ publicacion.date }}</p>
 <div>
-    <img src="{{ publicacion.image.url }}" alt="Imagen del blog" style="max-width: 600px;">
+    {% if publicacion.image %}
+    <img src="{{ publicacion.image.url }}" alt="Imagen de la publicación">
+    {% else %}
+    <p>No hay imagen disponible.</p>
+    {% endif %}
     <!-- Si hay una imagen asociada, se muestra aquí -->
 </div>
 <p>{{ publicacion.body }}</p>

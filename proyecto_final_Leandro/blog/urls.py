@@ -1,5 +1,5 @@
 from django.urls import path  # Importo la herramienta para manejar rutas
-from . import views  # Importo las vistas del blog
+from . import views  # Importo las vistas
 
 # Rutas de la app blog
 urlpatterns = [

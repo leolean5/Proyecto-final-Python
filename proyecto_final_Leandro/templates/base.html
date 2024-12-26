@@ -9,25 +9,27 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/crear/">Crear Publicación</a></li>
-                <li><a href="/acerca/">Acerca de mí</a></li>
+                <li><a href="{% url 'blog_lista' %}">Inicio</a></li> <!-- Enlace a la lista de publicaciones -->
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Perfil</a></li>
+                    <li><a href="{% url 'blog_crear' %}">Crear Publicación</a></li> <!-- Enlace para crear -->
+                    <li><a href="{% url 'profile' %}">Perfil</a></li> <!-- Enlace al perfil del usuario -->
+                    <li><a href="{% url 'editar_perfil' %}">Editar Perfil</a></li> <!-- Enlace para editar perfil -->
                     <li>
                         <form action="{% url 'logout' %}" method="post" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit">Cerrar Sesión</button>
+                            <button type="submit">Cerrar Sesión</button> <!-- Botón para cerrar sesión -->
                         </form>
                     </li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
-                    <li><a href="{% url 'register' %}">Registrarse</a></li>
+                    <li><a href="{% url 'login' %}">Iniciar Sesión</a></li> <!-- Enlace al login -->
+                    <li><a href="{% url 'register' %}">Registrarse</a></li> <!-- Enlace al registro -->
                 {% endif %}
+                <li><a href="{% url 'acerca' %}">Acerca de mí</a></li> <!-- Enlace a la página "Acerca de mí" -->
             </ul>
         </nav>
     </header>
     <main>
+        <!-- Muestra los mensajes del sistema -->
         {% if messages %}
         <ul>
             {% for message in messages %}
@@ -35,9 +37,12 @@
             {% endfor %}
         </ul>
         {% endif %}
+        
+        <!-- Contenido dinámico de cada página -->
         {% block content %}
         {% endblock %}
     </main>
 </body>
 </html>
+
 
