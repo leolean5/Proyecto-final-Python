@@ -10,9 +10,9 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <!-- Renderiza automáticamente el formulario de inicio de sesión -->
-        <button type="submit">Ingresar</button>
+        <button type="submit">Iniciar Sesión</button>
     </form>
-    <a href="/">Volver al Inicio</a>
+    <p>¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate aquí</a></p>
 </body>
 </html>
+
