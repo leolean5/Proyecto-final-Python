@@ -13,14 +13,16 @@
                 <li><a href="/crear/">Crear Publicación</a></li>
                 <li><a href="/acerca/">Acerca de mí</a></li>
                 {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Perfil</a></li>
                     <li>
-                        <form action="/logout/" method="post" style="display: inline;">
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
                             {% csrf_token %}
                             <button type="submit">Cerrar Sesión</button>
                         </form>
                     </li>
                 {% else %}
-                    <li><a href="/login/">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'register' %}">Registrarse</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -38,3 +40,4 @@
     </main>
 </body>
 </html>
+

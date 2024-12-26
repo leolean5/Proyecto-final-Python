@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Perfil de Usuario</h2>
+        <p>¡Bienvenido, {{ user.username }}!</p>
+        <p>Correo: {{ user.email }}</p>
+    </div>
+{% endblock %}
