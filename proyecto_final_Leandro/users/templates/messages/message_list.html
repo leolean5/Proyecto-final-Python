@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Mensajes{% endblock %}
+
+{% block content %}
+<h1>Mensajes</h1>
+
+<h2>Recibidos</h2>
+{% if mensajes_recibidos %}
+    <ul>
+        {% for mensaje in mensajes_recibidos %}
+        <li>
+            <strong>De:</strong> {{ mensaje.sender.username }} <br>
+            {{ mensaje.content }} <br>
+            <small><em>Enviado: {{ mensaje.timestamp }}</em></small>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No has recibido mensajes.</p>
+{% endif %}
+
+<h2>Enviados</h2>
+{% if mensajes_enviados %}
+    <ul>
+        {% for mensaje in mensajes_enviados %}
+        <li>
+            <strong>Para:</strong> {{ mensaje.receiver.username }} <br>
+            {{ mensaje.content }} <br>
+            <small><em>Enviado: {{ mensaje.timestamp }}</em></small>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No has enviado mensajes.</p>
+{% endif %}
+
+<!-- Botón para enviar un nuevo mensaje -->
+<a href="{% url 'send_message' %}" class="btn btn-primary">Enviar Mensaje</a>
+
+<!-- Opcional: Botón para refrescar -->
+<a href="{% url 'message_list' %}" class="btn btn-secondary">Actualizar Lista</a>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Mensaje Detalle{% endblock %}
+{% block content %}
+<h1>Detalle del Mensaje</h1>
+<p><strong>De:</strong> {{ message.sender.username }}</p>
+<p><strong>Para:</strong> {{ message.recipient.username }}</p>
+<p><strong>Fecha:</strong> {{ message.timestamp }}</p>
+<p><strong>Contenido:</strong> {{ message.content }}</p>
+<a href="{% url 'message_list' %}">Volver a la lista</a>
+{% endblock %}

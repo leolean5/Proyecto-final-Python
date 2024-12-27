@@ -1,22 +1,25 @@
-from django.shortcuts import render, redirect  # Para renderizar plantillas y redirigir
+from django.shortcuts import render, redirect, get_object_or_404  # Para renderizar plantillas y redirigir
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm  # Formulario prediseñados
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages  # Para mostrar mensajes de éxito o error
 from django.contrib.auth.decorators import login_required  # Para requerir autenticación
-from .forms import EditarPerfilForm  # Importamos formulario creados
+from .forms import EditarPerfilForm, MessageForm, RegistroForm  # Importamos formularios creados
+from .models import Message
+from django.contrib.auth.models import User
+
 
 # Vista para registrar usuarios
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegistroForm(request.POST)
         if form.is_valid():
-            form.save()  # Guarda el nuevo usuario en la base de datos
-            username = form.cleaned_data.get('username')
+            user = form.save()  # Guarda el nuevo usuario
+            username = user.username  # Obtén el nombre de usuario
             messages.success(request, f'¡Tu cuenta ha sido creada, {username}! Ya puedes iniciar sesión.')
-            return redirect('login')  # Redirige al login después del registro
+            return render(request, 'users/registration_success.html', {'username': username})
     else:
-        form = UserCreationForm()  # Si no es POST, muestra un formulario vacío
-    return render(request, 'users/register.html', {'form': form})  # Renderiza el formulario de registro
+        form = RegistroForm()
+    return render(request, 'users/register.html', {'form': form})
 
 # Vista para mostrar el perfil de usuario
 @login_required  # Requiere que el usuario esté autenticado
@@ -49,4 +52,41 @@ def cambiar_contrasena(request):
     else:
         form = PasswordChangeForm(user=request.user)
     return render(request, 'users/cambiar_contrasena.html', {'form': form})
+
+# Lista los mensajes enviados y recibidos por el usuario autenticado
+@login_required
+def message_list(request):
+    mensajes_recibidos = Message.objects.filter(recipient=request.user).order_by('-timestamp')
+    mensajes_enviados = Message.objects.filter(sender=request.user).order_by('-timestamp')
+    return render(request, 'messages/message_list.html', {
+        'mensajes_recibidos': mensajes_recibidos,
+        'mensajes_enviados': mensajes_enviados,
+    })
+
+# Detalle de un mensaje específico
+@login_required
+def message_detail(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+    if message.recipient != request.user and message.sender != request.user:
+        messages.error(request, "No tienes permiso para ver este mensaje.")
+        return redirect('message_list')
+    return render(request, 'messages/message_detail.html', {'message': message})
+
+    # Formulario para enviar un nuevo mensaje
+@login_required
+def send_message(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            mensaje = form.save(commit=False)
+            mensaje.sender = request.user  # Establecemos al usuario logueado como remitente
+            mensaje.save()
+            messages.success(request, 'Mensaje enviado con éxito!')
+            return redirect('message_list')  # Redirigir a la lista de mensajes
+    else:
+        form = MessageForm()
+    return render(request, 'messages/send_message.html', {'form': form})
+
+
+
 

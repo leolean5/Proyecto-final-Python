@@ -88,18 +88,13 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'OPTIONS': {
+            'min_length': 4,  # La longitud mínima será de 4 caracteres
+        }
     },
 ]
+
 
 
 # Internationalization
@@ -130,3 +125,8 @@ LOGIN_REDIRECT_URL = '/'
 
 # Redirección después de cerrar sesión
 LOGOUT_REDIRECT_URL = '/'
+
+# Configuración para archivos multimedia
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+

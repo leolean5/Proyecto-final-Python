@@ -15,6 +15,7 @@ def blog_lista(request):
 
 
 # Vista para mostrar los detalles de una publicación específica
+@login_required
 def blog_detalle(request, blog_id):
     publicacion = get_object_or_404(Blog, id=blog_id)
     # Busco una publicación por ID. Si no existe, devuelvo un error 404
