@@ -12,8 +12,7 @@ class EditarPerfilForm(forms.ModelForm):
             'first_name': 'Nombre',
             'last_name': 'Apellido',
             'email': 'Correo Electrónico',
-        }
-        
+        }        
 
 class MessageForm(forms.ModelForm):
     class Meta:

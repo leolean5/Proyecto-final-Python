@@ -49,12 +49,42 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas y her
    - Estructura sencilla para navegación y vistas de publicaciones.
 
 ## TESTs
+## TESTs
+# App blog
+
+Contiene pruebas para verificar las funcionalidades principales
+relacionadas con la aplicación de blog: visualización de publicaciones, 
+creación y edición de publicaciones. Las pruebas aseguran que cada 
+parte del sistema del blog funcione como se espera.
+
+Pruebas incluidas:
+1. Visualización de la lista de publicaciones.
+2. Creación de una nueva publicación.
+3. Edición de una publicación existente.
+
+- setUp: Configura un cliente, un usuario y una publicación de prueba para las pruebas.
+- test_pagina_lista_publicaciones: Verifica que se pueda visualizar la lista de publicaciones.
+- test_crear_publicacion_autenticado: Comprueba que se pueden crear nuevas publicaciones.
+- test_editar_publicacion: Valida que se puedan editar publicaciones existentes.
+
+Ejecución: `python manage.py test blog`
+
 # App users
-1. setUp: Configura un cliente y un usuario de prueba para las pruebas.
-2. test_registro_usuario: Verifica que se puedan registrar nuevos usuarios.
-3. test_editar_perfil: Comprueba que los datos del perfil de un usuario se pueden actualizar.
-4. test_envio_mensaje: Prueba el envío de mensajes entre usuarios.
-5. test_mensajes_recibidos: Confirma que los mensajes recibidos aparecen en la lista de mensajes.
+Contiene pruebas para verificar las funcionalidades principales
+relacionadas con los usuarios: registro, inicio de sesión, edición de perfil
+y otros elementos clave de la aplicación. Las pruebas aseguran que cada parte
+del sistema de usuarios funciona como se espera.
+Pruebas incluidas:
+1. Registro de usuario.
+2. Inicio de sesión.
+3. Edición de perfil.
+- setUp: Configura un cliente y un usuario de prueba para las pruebas.
+- test_registro_usuario: Verifica que se puedan registrar nuevos usuarios.
+- test_editar_perfil: Comprueba que los datos del perfil de un usuario se pueden actualizar.
+- test_envio_mensaje: Prueba el envío de mensajes entre usuarios.
+- test_mensajes_recibidos: Confirma que los mensajes recibidos aparecen en la lista de mensajes.
+
+Ejecución: `python manage.py test users`
 
 
 ## Notas adicionales
