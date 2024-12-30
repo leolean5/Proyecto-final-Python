@@ -13,10 +13,10 @@ def register(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Guarda el nuevo usuario
-            username = user.username  # Obtén el nombre de usuario
+            user = form.save() # Guarda el nuevo usuario
+            username = form.cleaned_data.get('username') 
             messages.success(request, f'¡Tu cuenta ha sido creada, {username}! Ya puedes iniciar sesión.')
-            return render(request, 'users/registration_success.html', {'username': username})
+            return redirect('login')  # Redirige al login después del registro
     else:
         form = RegistroForm()
     return render(request, 'users/register.html', {'form': form})

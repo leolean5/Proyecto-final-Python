@@ -6,13 +6,15 @@ from django.contrib.auth.forms import UserCreationForm
 class EditarPerfilForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['username', 'first_name', 'last_name', 'email']  # Incluye el campo 'username'
         labels = {
+            'username': 'Nombre de Usuario',  # Etiqueta personalizada
             'first_name': 'Nombre',
             'last_name': 'Apellido',
-            'email': 'Correo Electrónico'
+            'email': 'Correo Electrónico',
         }
         
+
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message

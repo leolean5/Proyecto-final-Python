@@ -48,10 +48,18 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas y her
 5. Diseño básico con HTML:
    - Estructura sencilla para navegación y vistas de publicaciones.
 
+## TESTs
+# App users
+1. setUp: Configura un cliente y un usuario de prueba para las pruebas.
+2. test_registro_usuario: Verifica que se puedan registrar nuevos usuarios.
+3. test_editar_perfil: Comprueba que los datos del perfil de un usuario se pueden actualizar.
+4. test_envio_mensaje: Prueba el envío de mensajes entre usuarios.
+5. test_mensajes_recibidos: Confirma que los mensajes recibidos aparecen en la lista de mensajes.
+
 
 ## Notas adicionales
 Este proyecto fue probado con Python 3.13 y Django 5.1.4.
-Asegúrate de que el servidor está corriendo en el puerto 8000 (por defecto) antes de acceder a las rutas.
+Se aclara que en este proyecto tuve ayuda de mi hermano (Ing. en Sistemas) y se utilizo IA para agilizar la realización.
 
 ## Autor
 Leandro Agustín Molina
