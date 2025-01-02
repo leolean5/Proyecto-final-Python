@@ -51,7 +51,6 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas y her
    - Estructura sencilla para navegación y vistas de publicaciones.
 
 ## TESTs
-## TESTs
 # App blog
 
 Contiene pruebas para verificar las funcionalidades principales
