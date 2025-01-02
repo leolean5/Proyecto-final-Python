@@ -11,6 +11,9 @@
             <ul>
                 <li><a href="{% url 'blog_lista' %}">Inicio</a></li> <!-- Enlace a la lista de publicaciones -->
                 {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'listar_usuarios' %}">Usuarios registrados</a></li> <!-- Enlace para admins -->
+                    {% endif %}
                     <li><a href="{% url 'blog_crear' %}">Crear Publicación</a></li> <!-- Enlace para crear -->
                     <li><a href="{% url 'message_list' %}">Mensajes</a></li> <!-- Enlace para mensajes -->
                     <li><a href="{% url 'profile' %}">Perfil</a></li> <!-- Enlace al perfil del usuario -->
@@ -45,5 +48,6 @@
     </main>
 </body>
 </html>
+
 
 

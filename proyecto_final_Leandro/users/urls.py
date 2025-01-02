@@ -9,4 +9,5 @@ urlpatterns = [
     path('messages/', views.message_list, name='message_list'),  # Lista de mensajes
     path('messages/<int:message_id>/', views.message_detail, name='message_detail'),  # Detalle de mensaje
     path('messages/send/', views.send_message, name='send_message'),  # Enviar mensaje
+    path('usuarios/', views.listar_usuarios, name='listar_usuarios'),  # Ruta para listar usuarios
 ]

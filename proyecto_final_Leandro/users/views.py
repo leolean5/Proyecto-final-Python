@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404  # Para renderi
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm  # Formulario prediseñados
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages  # Para mostrar mensajes de éxito o error
-from django.contrib.auth.decorators import login_required  # Para requerir autenticación
+from django.contrib.auth.decorators import login_required, user_passes_test  # Para requerir autenticación
 from .forms import EditarPerfilForm, MessageForm, RegistroForm  # Importamos formularios creados
 from .models import Message
 from django.contrib.auth.models import User
@@ -86,6 +86,14 @@ def send_message(request):
     else:
         form = MessageForm()
     return render(request, 'messages/send_message.html', {'form': form})
+
+
+# Vista para listar usuarios (solo para administradores)
+@user_passes_test(lambda u: u.is_staff)
+def listar_usuarios(request):
+    usuarios = User.objects.all()  # Traemos todos los usuarios del sistema
+    return render(request, 'users/listar_usuarios.html', {'usuarios': usuarios})  # Renderizamos la plantilla
+
 
 
 

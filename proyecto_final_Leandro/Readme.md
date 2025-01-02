@@ -32,6 +32,8 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas y her
 5. Accede a la aplicación
     - Página principal del blog: http://127.0.0.1:8000/
     - Panel de administración: http://127.0.0.1:8000/admin/
+      **Usuario Admin:** admin
+      **Contraseña Admin:** 1234
 
 ## Funcionalidades implementadas
 1. Autenticación de usuarios:
@@ -90,6 +92,7 @@ Ejecución: `python manage.py test users`
 ## Notas adicionales
 Este proyecto fue probado con Python 3.13 y Django 5.1.4.
 Se aclara que en este proyecto tuve ayuda de mi hermano (Ing. en Sistemas) y se utilizo IA para agilizar la realización.
+Los casos de prueba del proyecto están documentados en el archivo [CASOS_DE_PRUEBA.md](CASOS_DE_PRUEBA.md).
 
 ## Autor
 Leandro Agustín Molina

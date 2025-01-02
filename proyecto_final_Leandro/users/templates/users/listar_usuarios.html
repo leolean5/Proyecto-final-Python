@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Administrar Usuarios
+{% endblock %}
+
+{% block content %}
+<h1>Lista de Usuarios</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre de Usuario</th>
+            <th>Email</th>
+            <th>Fecha de Creación</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.date_joined }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
